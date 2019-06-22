@@ -1,0 +1,12 @@
+<h1>Hacker News Haven!</h1>
+<p>Find all the current best stories from Hacker News here!</p>
+<div id="stories">
+   <div *ngIf="loading">
+      <h2>Loading Stories...</h2>
+   </div>
+   <div *ngIf="!loading">
+      <div *ngFor="let story of stories">
+         <story [story]="story"></story>
+      </div>
+   </div>
+</div>

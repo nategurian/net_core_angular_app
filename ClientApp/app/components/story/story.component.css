@@ -1,0 +1,11 @@
+.container {
+   background-color: aliceblue;
+   border-radius: 10px;
+   border: 1px black solid;
+   margin-bottom: 5px;
+   width: 100%;
+}
+
+.content {
+   padding: 5px;
+}
