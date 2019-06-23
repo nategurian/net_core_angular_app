@@ -7,14 +7,23 @@ import { RouterModule } from "@angular/router";
 // Components
 import { AppComponent } from "./components/app/app.component";
 import { NavMenuComponent } from "./components/navmenu/navmenu.component";
+import { AboutComponent } from "./components/about/about.component";
 import { HomeComponent } from "./components/home/home.component";
 import { StoryComponent } from "./components/story/story.component";
 
 // Services
 import { DataService } from "./services/dataservice";
 
+const COMPONENTS = [
+  AppComponent,
+  NavMenuComponent,
+  HomeComponent,
+  StoryComponent,
+  AboutComponent
+];
+
 @NgModule({
-  declarations: [AppComponent, NavMenuComponent, HomeComponent, StoryComponent],
+  declarations: [...COMPONENTS],
   imports: [
     CommonModule,
     HttpModule,
@@ -22,6 +31,7 @@ import { DataService } from "./services/dataservice";
     RouterModule.forRoot([
       { path: "", redirectTo: "home", pathMatch: "full" },
       { path: "home", component: HomeComponent },
+      { path: "about", component: AboutComponent },
       { path: "**", redirectTo: "home" }
     ])
   ],

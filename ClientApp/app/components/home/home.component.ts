@@ -16,25 +16,31 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ds.getBestStories().then(data => {
-      let response: any = data;
+    const savedStories = localStorage.getItem("stories");
+    if (savedStories) {
+      this.stories = JSON.parse(savedStories);
+    } else {
+      this.ds.getBestStories().then(data => {
+        let response: any = data;
 
-      response.forEach((story: Story) => {
-        let s = new Story();
+        response.forEach((story: Story) => {
+          let s = new Story();
 
-        s.by = story.by;
-        s.descendants = story.descendants;
-        s.id = story.id;
-        s.score = story.score;
-        s.time = story.time;
-        s.title = story.title;
-        s.type = story.type;
-        s.url = story.url;
+          s.by = story.by;
+          s.descendants = story.descendants;
+          s.id = story.id;
+          s.score = story.score;
+          s.time = story.time;
+          s.title = story.title;
+          s.type = story.type;
+          s.url = story.url;
 
-        this.stories.push(s);
+          this.stories.push(s);
+        });
+
+        localStorage.setItem("stories", JSON.stringify(this.stories));
       });
-
-      this.loading = false;
-    });
+    }
+    this.loading = false;
   }
 }
