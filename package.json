@@ -6,7 +6,7 @@
     "test": "karma start ClientApp/test/karma.conf.js"
   },
   "engines": {
-    "node": "4.2.3",
+    "node": "4.8.3",
     "npm": "3.0.0"
   },
   "devDependencies": {
