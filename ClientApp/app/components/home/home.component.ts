@@ -16,9 +16,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    const savedStories = localStorage.getItem("stories");
+    let savedStories = null;
+    if (typeof window !== undefined) {
+      savedStories = localStorage.getItem("stories");
+    }
     if (savedStories) {
       this.stories = JSON.parse(savedStories);
+      this.loading = false;
     } else {
       this.ds.getBestStories().then(data => {
         let response: any = data;
@@ -37,10 +41,11 @@ export class HomeComponent implements OnInit {
 
           this.stories.push(s);
         });
-
-        localStorage.setItem("stories", JSON.stringify(this.stories));
+        if (typeof window !== undefined) {
+          localStorage.setItem("stories", JSON.stringify(this.stories));
+        }
+        this.loading = false;
       });
     }
-    this.loading = false;
   }
 }
