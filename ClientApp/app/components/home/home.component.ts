@@ -4,7 +4,8 @@ import { Story } from "../../Models/story.model";
 
 @Component({
   selector: "home",
-  templateUrl: "./home.component.html"
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
   loading: boolean;
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     let savedStories = null;
+    // Check local storage to see if stories are cached
     if (typeof window !== undefined) {
       savedStories = localStorage.getItem("stories");
     }
@@ -27,6 +29,8 @@ export class HomeComponent implements OnInit {
       this.ds.getBestStories().then(data => {
         let response: any = data;
 
+        // For each story that comes back, create the story obj
+        // and push it to the story arr and set to local storage.
         response.forEach((story: Story) => {
           let s = new Story();
 

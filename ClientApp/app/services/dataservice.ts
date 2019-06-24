@@ -1,17 +1,20 @@
 import { Http, Headers } from "@angular/http";
-import { Injectable } from "@angular/core";
-import { Story } from "../Models/story.model";
+import { Injectable, Inject } from "@angular/core";
 
 @Injectable()
 export class DataService {
-  constructor(private http: Http) {}
+  baseurl: string;
+
+  constructor(private http: Http, @Inject("BASE_URL") url: string) {
+    this.baseurl = url;
+  }
 
   public getBestStories() {
     const headers = new Headers();
     let promise = new Promise((resolve, reject) => {
       headers.append("Content-Type", "application/json");
       this.http
-        .get("http://localhost:5000/api/Stories/GetBestStories", { headers })
+        .get(`${this.baseurl}api/Stories/GetBestStories`, { headers })
         .subscribe(data => {
           let response: any = data;
           let stories = JSON.parse(response._body);

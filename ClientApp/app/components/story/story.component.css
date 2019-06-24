@@ -2,10 +2,11 @@
    background-color: aliceblue;
    border-radius: 10px;
    border: 1px black solid;
-   margin-bottom: 5px;
+   margin-bottom: 8px;
    width: 100%;
+   box-shadow: 0 4px 2px -2px gray;
 }
 
 .content {
-   padding: 5px;
+   margin-top: 3px;
 }
