@@ -1,14 +1,20 @@
 .clear {
    border-radius: 0px 5px 5px 0px;
    margin-left: -5px;
+   height: 31px;
+   width: 31px;
+   border: 1px solid;
+   border-left: none;
 }
 
 .search {
-   margin-bottom: 5px;
+   margin-bottom: 15px;
 }
 
 .searchbar {
    border-radius: 5px 0px 0px 5px;
    border: 1px solid;
-   font-size: 18px;
+   border-right: none;
+   font-size: 14px;
+   padding: 4px;
 }

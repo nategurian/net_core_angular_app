@@ -7,10 +7,11 @@
    </div>
    <div *ngIf="!loading">
       <div class="search">
-         <input class="searchbar" type="text" placeholder="Search by title/author" />
-         <!-- <button class="clear">X</button> -->
+         <input class="searchbar" [(ngModel)]="filter" (input)="onFilterChange($event)" type="text"
+            placeholder="Search by title/author" />
+         <button title="Clear filter" (click)="onFilterChange('')" class="clear">X</button>
       </div>
-      <div *ngFor="let story of stories">
+      <div *ngFor="let story of (filteredStories | async)">
          <story [story]="story"></story>
       </div>
    </div>
